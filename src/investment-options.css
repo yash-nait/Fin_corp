@@ -1,0 +1,49 @@
+.investment-option-parent {
+	color: #fff;
+	height: 20%;
+	margin: 6% 0;
+	margin-right: 10%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-position: center;
+	background-size: cover;
+	position: relative;
+	overflow: hidden;
+}
+
+.investment-option-parent:hover {
+	box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.75);
+	-webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.75);
+}
+
+.investment-option-parent img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0.6;
+	transition: all 0.5s;
+}
+
+.investment-option-parent img:hover {
+	transform: scale(1.5);
+}
+
+.investment-option-parent h3 {
+	position: absolute;
+}
+
+.right-column {
+	height: 100vh;
+}
+
+.close-button-custom {
+	height: 32px;
+	width: 32px;
+}
+
+.custom-modal {
+	background-color: #333f53;
+	color: white;
+}

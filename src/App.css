@@ -1,13 +1,13 @@
-body{
-    border: 0;
+body {
+	border: 0;
 
-    color: white;
+	color: white;
 
-    font-family: 'Press Start 2P', cursive;
+	font-family: "Press Start 2P", cursive;
 
-    overflow-x: hidden;
+	overflow-x: hidden;
 }
 
-.bkg{
-    background-color: #252e3d;
+.bkg {
+	background-color: #252e3d;
 }
