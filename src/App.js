@@ -8,15 +8,23 @@ import CompoudingBackground from "./images/BackgroundImages/compounding_backgrou
 function App() {
 	return (
 		<div className='App bkg'>
-			<div>
-				<div className='row'>
-					<div className='col-8'>
-						<Game />
-					</div>
-					<div className='col-4'>
-						<Choices />
-					</div>
+			<div className='row'>
+				<div className='col-8'>
+					<Game />
 				</div>
+				<div className='col-4'>
+					<Choices />
+				</div>
+			</div>
+			<div>
+				<h4
+					style={{
+						textAlign: "center",
+						marginTop: "4rem",
+					}}
+				>
+					Also learn about
+				</h4>
 				<div className='row'>
 					<div className='col-6'>
 						<InvestmentOption
@@ -34,6 +42,7 @@ function App() {
 					</div>
 				</div>
 			</div>
+			<div className='footer'></div>
 		</div>
 	);
 }

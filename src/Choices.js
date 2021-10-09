@@ -10,6 +10,16 @@ import MiscBackground from "./images/BackgroundImages/misc_background.png";
 const Choices = () => {
 	return (
 		<>
+			<h4
+				style={{
+					textAlign: "center",
+					marginRight: "12%",
+					marginTop: "2rem",
+					marginBottom: "4rem",
+				}}
+			>
+				Learn about
+			</h4>
 			<InvestmentOption
 				name='Crypto Currency'
 				image={CryptoBackground}
@@ -21,6 +31,7 @@ const Choices = () => {
 				image={StocksBackground}
 				message={Details.stock.info}
 				fact={Details.stock.fact}
+				glossary={Details.stock.glossary}
 			/>
 			<InvestmentOption
 				name='Traditional Banking'

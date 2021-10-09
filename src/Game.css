@@ -1,75 +1,104 @@
-.coin_gif{
-    height: 20%;
-    width: 20%;
-}
-.score{
-    margin: 7% 14% 3% 7%;
-    text-align: center;
+li {
+	margin: 1rem 0;
 }
 
-.quiz{
-    border: #e60000 dashed 10px;
-    margin: 5% 14% 3% 7%;
-    text-align: center;
+li::marker {
+	font-size: 1.5rem;
+	font-weight: bold;
 }
 
-.year{
-    background-color: #1e2531;
-    margin: 3%;
-    padding: 3%;
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2rem;
+	padding-bottom: 0;
 }
 
-.options{
-    margin: 5%;
+.info-icon {
+	width: 32px;
+	cursor: pointer;
+	margin-left: 1rem;
+}
+
+.coin_gif {
+	height: 30%;
+	width: 30%;
+}
+.score {
+	margin: 5% 14% 7% 7%;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	border: #e9b20c dashed 10px;
+	padding: 3rem 0;
+}
+
+.quiz {
+	border: #e60000 dashed 10px;
+	margin: 5% 14% 3% 7%;
+	text-align: center;
+	padding: 3rem 0;
+}
+
+.year {
+	background-color: #1e2531;
+	margin: 3%;
+	padding: 3%;
+}
+
+.options {
+	margin: 5%;
 }
 
 .button {
-    padding: 15px 25px;
-    margin: 2%;
-    font-size: 24px;
-    color: black;
-    background-color: red;
-    border: red solid 5px;
-    border-radius: 40px;
-    box-shadow: 3px 9px rgb(110, 110, 110);
-  }
-  
-  .button:hover {
-      color: red;
-      background-color: black;
-    }
-  
-  .button:active {
-    box-shadow: 0 5px #666;
-    transform: translateY(7px);
-  }
-  .result{
-      background-color:  black;
-      opacity: .9;
-      z-index: 2;
-      position: fixed;
-      top:0;
-      left: 0;
-      padding: 200px 2%;
-      text-align: center;
-      height: 100vh;
-      width: 100vw;
-  }
-
-  .fResult{
-    background-color:  black;
-    opacity: .9;
-    z-index: 2;
-    position: fixed;
-    top:0;
-    left: 0;
-    padding: 100px 2%;
-    text-align: center;
-    height: 100vh;
-    width: 100vw;
+	padding: 15px 25px;
+	margin: 2%;
+	font-size: 24px;
+	color: black;
+	background-color: red;
+	border: red solid 5px;
+	border-radius: 40px;
+	box-shadow: 3px 9px rgb(110, 110, 110);
 }
 
-  .message-text{
-      margin: 15px 0;
-      color: #FF9526;
-  }
+.button:hover {
+	color: red;
+	background-color: black;
+}
+
+.button:active {
+	box-shadow: 0 5px #666;
+	transform: translateY(7px);
+}
+.result {
+	background-color: black;
+	opacity: 0.9;
+	z-index: 2;
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 200px 2%;
+	text-align: center;
+	height: 100vh;
+	width: 100vw;
+}
+
+.fResult {
+	background-color: black;
+	opacity: 0.9;
+	z-index: 2;
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 100px 2%;
+	text-align: center;
+	height: 100vh;
+	width: 100vw;
+}
+
+.message-text {
+	margin: 15px 0;
+	color: #ff9526;
+}

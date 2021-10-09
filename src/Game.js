@@ -1,120 +1,315 @@
-import React, { useState } from 'react'
+import React, {useState} from "react";
+import {Modal, Button} from "react-bootstrap";
 
-import './Game.css'
-import logo from  './images/logoCoin.gif'
+import "./Game.css";
+import logo from "./images/logoCoin.gif";
+import info from "./images/info-icon.png";
 
 const data = [
-    {options: ["Stock Market","Recurring Deposit","Gold"] ,roi : [17.9,5,4],msg:["Bulls were on the run (What are bulls? Check the info section)","Always a Safe Investment but low return","Indian's favourite Investment"]},
-    {options: ["Stock Market","Fixed Deposit", "High Risk Assets"] ,roi : [-24.62,6,-50],msg:["It's a Crash! It's a Crash!","Always a Safe Investment but low return","Well , sometimes you win all and sometimes you lose all, this time you lost."]},
-    {options: ["Stock Market","IPOs","Recurring Deposit"] ,roi : [27.70,12,5],msg:["One of the best year for Indian investors.Bulls were soaring high.","What is an IPO ? (Check the info section)","Always a Safe Investment but low return"]},
-    {options: ["Stock Market","Laxmi Chit Fund","Fixed Deposits"] ,roi : [6.76,-99,6],msg:["Lukewarm year for the market","It's a SCAM!","Always a Safe Investment but low return"]},
-    {options: ["Stock Market","Invest in Art","IPO"] ,roi : [31.39,10,2],msg:["Highest Yearly return in a decade","One of the Unconventional form of Investment","You have an eye for the right company"]},
-    {options: ["Stock Market","Cryptocurrency","Recurring Deposits"] ,roi : [-4.0,0,5],msg:["It's a bearish market. (What are bears ? Check the info section)","What is Cryptocurrency?(Check the info section)","Always a Safe Investment but low return"]},
-    {options: ["Stock Market","Cryptocurrency","Fixed Deposits"] ,roi : [3.01,1318,6],msg:["It's a stagnant market","Just WOW! Risk Paid off!","Always a Safe Investment but low return"]},
-    {options: ["Stock Market","Cryptocurrency","Recurring Deposits"] ,roi : [28.65,-72.6,5],msg:["Bulls are back at it. Market's are on BOOM","High Risks and High Rewards, unfortunately not this time","Always a Safe Investment but low return"]},
-    {options: ["Stock Market","Cryptocurrency","Fixed Deposits"] ,roi : [3.15,87.2,6],msg:["Nothing's happening this year","You made the right choice","Always a Safe Investment but low return"]},
-    {options: ["Stock Market","Cryptocurrency","IPO"] ,roi : [12.02,302.8,70],msg:["It is good but crypto's were better investment.","Super High Returns! But what are cryptos(Check the info section for details.)","Well done ! you trusted in an innovative company and it gave you humongous returns"]},
-    {options: ["Stock Market","Cryptocurrency","IPO"] ,roi : [12.02,302.8,70],msg:["It is good but crypto's were better investment.","Super High Returns! But what are cryptos(Check the info section for details.)","Well done ! you trusted in an innovative company and it gave you humongous returns"]},
-]
+	{
+		options: ["Stock Market", "Recurring Deposit", "Gold"],
+		roi: [17.9, 5, 4],
+		msg: [
+			"Bulls were on the run (What are bulls? Check the info section)",
+			"Always a Safe Investment but low return",
+			"Indian's favourite Investment",
+		],
+	},
+	{
+		options: ["Stock Market", "Fixed Deposit", "High Risk Assets"],
+		roi: [-24.62, 6, -50],
+		msg: [
+			"It's a Crash! It's a Crash!",
+			"Always a Safe Investment but low return",
+			"Well , sometimes you win all and sometimes you lose all, this time you lost.",
+		],
+	},
+	{
+		options: ["Stock Market", "IPOs", "Recurring Deposit"],
+		roi: [27.7, 12, 5],
+		msg: [
+			"One of the best year for Indian investors.Bulls were soaring high.",
+			"What is an IPO ? (Check the info section)",
+			"Always a Safe Investment but low return",
+		],
+	},
+	{
+		options: ["Stock Market", "Laxmi Chit Fund", "Fixed Deposits"],
+		roi: [6.76, -99, 6],
+		msg: [
+			"Lukewarm year for the market",
+			"It's a SCAM!",
+			"Always a Safe Investment but low return",
+		],
+	},
+	{
+		options: ["Stock Market", "Invest in Art", "IPO"],
+		roi: [31.39, 10, 2],
+		msg: [
+			"Highest Yearly return in a decade",
+			"One of the Unconventional form of Investment",
+			"You have an eye for the right company",
+		],
+	},
+	{
+		options: ["Stock Market", "Cryptocurrency", "Recurring Deposits"],
+		roi: [-4.0, 0, 5],
+		msg: [
+			"It's a bearish market. (What are bears ? Check the info section)",
+			"What is Cryptocurrency?(Check the info section)",
+			"Always a Safe Investment but low return",
+		],
+	},
+	{
+		options: ["Stock Market", "Cryptocurrency", "Fixed Deposits"],
+		roi: [3.01, 1318, 6],
+		msg: [
+			"It's a stagnant market",
+			"Just WOW! Risk Paid off!",
+			"Always a Safe Investment but low return",
+		],
+	},
+	{
+		options: ["Stock Market", "Cryptocurrency", "Recurring Deposits"],
+		roi: [28.65, -72.6, 5],
+		msg: [
+			"Bulls are back at it. Market's are on BOOM",
+			"High Risks and High Rewards, unfortunately not this time",
+			"Always a Safe Investment but low return",
+		],
+	},
+	{
+		options: ["Stock Market", "Cryptocurrency", "Fixed Deposits"],
+		roi: [3.15, 87.2, 6],
+		msg: [
+			"Nothing's happening this year",
+			"You made the right choice",
+			"Always a Safe Investment but low return",
+		],
+	},
+	{
+		options: ["Stock Market", "Cryptocurrency", "IPO"],
+		roi: [12.02, 302.8, 70],
+		msg: [
+			"It is good but crypto's were better investment.",
+			"Super High Returns! But what are cryptos(Check the info section for details.)",
+			"Well done ! you trusted in an innovative company and it gave you humongous returns",
+		],
+	},
+	{
+		options: ["Stock Market", "Cryptocurrency", "IPO"],
+		roi: [12.02, 302.8, 70],
+		msg: [
+			"It is good but crypto's were better investment.",
+			"Super High Returns! But what are cryptos(Check the info section for details.)",
+			"Well done ! you trusted in an innovative company and it gave you humongous returns",
+		],
+	},
+];
 
+const InfoModal = ({show, handleClose}) => {
+	return (
+		<>
+			<Modal show={show} onHide={handleClose} centered size='xl'>
+				<Modal.Header className='custom-modal'>
+					<Modal.Title className='custom-modal-title'>
+						<div>How to play</div>
+						<div>
+							<img
+								src='/img/cross_new.png'
+								className='close-button-custom'
+								onClick={handleClose}
+							/>
+						</div>
+					</Modal.Title>
+				</Modal.Header>
+				<Modal.Body className='custom-modal custom-modal-body'>
+					<ul>
+						<li>
+							This game is all about investing your capital
+							wisely.
+						</li>
+						<li>The game starts with you having 200 coins.</li>
+						<li>
+							Every year, starting from 2010 (to 2020), you have 3
+							choices to invest your capital.
+						</li>
+						<li>
+							The objective of the game is to maximise your
+							capital by making an optimal choice in every
+							financial year.
+						</li>
+						<li>
+							After every investment, you will get your returns
+							and feedback on your decision.
+						</li>
+						<li>
+							This game is meant to be a medium to familiarise
+							teenagers and young adults about various investments
+							and their pros and cons.
+						</li>
+						<li>
+							You can learn about every investment option in our
+							learn about section.
+						</li>
+					</ul>
+				</Modal.Body>
+			</Modal>
+		</>
+	);
+};
 
 const Game = () => {
+	const [show, setShow] = useState(false);
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
 
-    const [idx, setIdx] = useState(0)
-    const [coin, setCoin] = useState(200)
-    const [resultVis, setResultVis] = useState("none")
-    const [finalResult, setFinalResult] = useState("none")
-    const [result , setResult] = useState({
-        delta: 0,
-        message: ""
-    })
-    const handleClick = (option) => {
-        
-        setResult({
-            delta: data[idx].roi[option.target.value], 
-            message:  data[idx].msg[option.target.value]
-        })
-        let temp = Math.floor(coin + ( data[idx].roi[option.target.value]*coin )/100)
-        
-        setCoin(temp)
+	const [idx, setIdx] = useState(0);
+	const [coin, setCoin] = useState(200);
+	const [resultVis, setResultVis] = useState("none");
+	const [finalResult, setFinalResult] = useState("none");
+	const [result, setResult] = useState({
+		delta: 0,
+		message: "",
+	});
+	const handleClick = option => {
+		if (resultVis != "none" || finalResult != "none") return;
+		setResult({
+			delta: data[idx].roi[option.target.value],
+			message: data[idx].msg[option.target.value],
+		});
+		let temp = Math.floor(
+			coin + (data[idx].roi[option.target.value] * coin) / 100
+		);
 
-        if(idx<10){
-            setIdx(idx => idx+1)
-        }
-        else{
-            setFinalResult("block")
-            return 
-        }
-        setResultVis('block')
-    }
+		setCoin(temp);
 
-    const handleResultClose = () => {
-        setIdx(0)
-        setCoin(200)
-        setResult({
-            delta: 0,
-            message: ""
-        })
-        setResultVis("none")
-        setFinalResult("none")
-    }
+		if (idx < 10) {
+			setIdx(idx => idx + 1);
+		} else {
+			setFinalResult("block");
+			return;
+		}
+		setResultVis("block");
+	};
 
+	const handleResultClose = () => {
+		setIdx(0);
+		setCoin(200);
+		setResult({
+			delta: 0,
+			message: "",
+		});
+		setResultVis("none");
+		setFinalResult("none");
+	};
 
-    return (
-        <div>
+	return (
+		<div>
+			<div className='header'>
+				<h4>LOGO</h4>
+				<div onClick={handleShow} style={{cursor: "pointer"}}>
+					How to play
+					<img src={info} className='info-icon' />
+				</div>
+				<InfoModal show={show} handleClose={handleClose} />
+			</div>
+			<div className='score'>
+				<h1 style={{color: "rgb(233, 178, 12)", fontSize: "5rem"}}>
+					{coin}
+				</h1>
+				<img className='coin_gif' src={logo} />
+			</div>
 
-            <div className="score">
-                <img className="coin_gif" src={logo} />
-                <br></br>
-                <br></br>
-                <h1 style={{color: "rgb(233, 178, 12)"}}>{coin}</h1>
-            </div>
+			<div className='quiz'>
+				<div className='year'>
+					<h1 style={{margin: 0}}>Year: {2010 + idx}</h1>
+				</div>
+				<div>
+					<h4>Make your financial choice for the year: </h4>
+				</div>
+				<div className='options'>
+					<button className='button' value={0} onClick={handleClick}>
+						{data[idx].options[0]}
+					</button>
+					<button className='button' value={1} onClick={handleClick}>
+						{data[idx].options[1]}
+					</button>
+					<br></br>
+					<button className='button' value={2} onClick={handleClick}>
+						{data[idx].options[2]}
+					</button>
+				</div>
+			</div>
 
-            <div className="quiz">
-                <div className="year">
-                    <h1 style={{margin:0}}>Year: {2010+idx}</h1>
-                </div>
-                <div>
-                    <h4>Make your financial choice for the year: </h4>
-                </div>
-                <div className="options">
-                    <button  className="button" value={0} onClick={handleClick}>{data[idx].options[0]}</button>
-                    <button  className="button" value={1} onClick={handleClick}>{data[idx].options[1]}</button>
-                    <br></br>
-                    <button  className="button" value={2} onClick={handleClick}>{data[idx].options[2]}</button>
-                </div>
-            </div>
- 
-            <div className = "fResult" style={{display: finalResult,zIndex:"3"}} onClick={handleResultClose}>
-            <h1>Final Results : </h1>
-            
-                <div style={{
-                    display:"flex",
-                    justifyContent:"center",
-                    alignItems:"center"
-                }}>
-                <div>
-                <span style={{color: (coin > 200 ? "green":"red") ,fontSize : "150px"}} >{coin}</span>
-                </div> 
-                <img className="coin_gif" style={{width:"180px"}} src={logo} />
-                </div>
+			<div
+				className='fResult'
+				style={{display: finalResult, zIndex: "3"}}
+				onClick={handleResultClose}
+			>
+				<h1>Final Results : </h1>
 
-                <br/>
-                <h1>
-                    <u className="message-text">{`You started with 200 coins and ended up with ${coin} coins. (${(coin-200)/2})% return!`}</u>
-                </h1>
-            </div>
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "center",
+						alignItems: "center",
+					}}
+				>
+					<div>
+						<span
+							style={{
+								color: coin > 200 ? "green" : "red",
+								fontSize: "150px",
+							}}
+						>
+							{coin}
+						</span>
+					</div>
+					<img
+						className='coin_gif'
+						style={{width: "180px"}}
+						src={logo}
+					/>
+				</div>
 
-            <div className = "result" style={{display: resultVis}} onClick={()=>setResultVis("none")}>
-                <span style={{color: (result.delta > 0 ? "green":"red") ,fontSize : "150px"}} >{result.delta > 0 ? "+":""}{result.delta} %</span>
-                <br/>
-                 <h1>
-                <u className="message-text">{result.message}</u>
-                </h1>
-            </div>
-            
-        </div>
-    )
-}
+				<br />
+				<h1>
+					<u className='message-text'>{`You started with 200 coins and ended up with ${coin} coins. (${
+						(coin - 200) / 2
+					})% return!`}</u>
+				</h1>
+				<div style={{marginTop: "10rem"}}>
+					Click anywhere to continue
+				</div>
+			</div>
 
-export default Game
+			<div
+				className='result'
+				style={{display: resultVis}}
+				onClick={() => setResultVis("none")}
+			>
+				<div style={{marginTop: "-10rem", marginBottom: "10rem"}}>
+					Click anywhere to continue
+				</div>
+				<div>
+					<span
+						style={{
+							color: result.delta > 0 ? "green" : "red",
+							fontSize: "150px",
+						}}
+					>
+						{result.delta > 0 ? "+" : ""}
+						{result.delta} %
+					</span>
+					<br />
+					<h1>
+						<u className='message-text'>{result.message}</u>
+					</h1>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default Game;
