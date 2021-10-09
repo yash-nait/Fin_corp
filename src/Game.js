@@ -22,8 +22,18 @@ const Game = () => {
 
     const [idx, setIdx] = useState(0)
     const [coin, setCoin] = useState(200)
-
+    const [resultVis, setResultVis] = useState("none")
+    const [result , setResult] = useState({
+        delta: 0,
+        message: ""
+    })
     const handleClick = (option) => {
+        
+        setResult({
+            delta: data[idx].roi[option.target.value], 
+            message:  data[idx].msg[option.target.value]
+        })
+        setResultVis('block')
         let temp = Math.floor(coin + ( data[idx].roi[option.target.value]*coin )/100)
 
         setCoin(temp)
@@ -32,6 +42,10 @@ const Game = () => {
         if(idx >= 10){
             setIdx(0)
             setCoin(200)
+            setResult({
+                delta: 0,
+                message: ""
+            })
         }
     }
 
@@ -59,6 +73,16 @@ const Game = () => {
                     <button  className="button" value={2} onClick={handleClick}>{data[idx].options[2]}</button>
                 </div>
             </div>
+ 
+            <div className = "result" style={{display: resultVis}} onClick={()=>setResultVis("none")}>
+                <span style={{color: (result.delta > 0 ? "green":"red") ,fontSize : "150px"}} >{result.delta > 0 ? "+":""}{result.delta} %</span>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                 {result.message}
+            </div>
+            
         </div>
     )
 }

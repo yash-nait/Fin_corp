@@ -10,7 +10,6 @@ function App() {
             <Game/>
           </div>
           <div class="col-4">
-            Sukant and bhatia
           </div>
         </div>
       </div>
