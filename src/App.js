@@ -1,4 +1,5 @@
 import "./App.css"
+import Game from './Game'
 
 function App() {
   return (
@@ -6,7 +7,7 @@ function App() {
       <div>
         <div class="row">
           <div class="col-8">
-            Column
+            <Game/>
           </div>
           <div class="col-4">
             Sukant and bhatia
