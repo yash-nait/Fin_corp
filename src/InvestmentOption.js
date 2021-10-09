@@ -4,7 +4,7 @@ import {Modal, Carousel} from "react-bootstrap";
 
 import "./investment-options.css";
 
-const InvestmentOption = ({name, image, message, fact, flag}) => {
+const InvestmentOption = ({name, image, message, fact, flag, glossary}) => {
 	const [show, setShow] = useState(false);
 	const [index, setIndex] = useState(0);
 
@@ -73,9 +73,9 @@ const InvestmentOption = ({name, image, message, fact, flag}) => {
 						</Carousel.Item>
 						<Carousel.Item>
 							<div className='custom-carousel-detail'>
-								<h5>Other Details</h5>
+								<h5>Glossary</h5>
 								<br />
-								<p>Test</p>
+								<p>{glossary}</p>
 							</div>
 						</Carousel.Item>
 					</Carousel>
