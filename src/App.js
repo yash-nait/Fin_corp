@@ -1,4 +1,5 @@
 import "./App.css";
+import Intro from "./Intro";
 import Choices from "./Choices";
 import Game from "./Game";
 import InvestmentOption from "./InvestmentOption";
@@ -8,6 +9,7 @@ import CompoudingBackground from "./images/BackgroundImages/compounding_backgrou
 function App() {
 	return (
 		<div className='App bkg'>
+			<Intro />
 			<div>
 				<div className='row'>
 					<div className='col-8'>
