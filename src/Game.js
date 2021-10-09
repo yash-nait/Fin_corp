@@ -37,20 +37,26 @@ const Game = () => {
         let temp = Math.floor(coin + ( data[idx].roi[option.target.value]*coin )/100)
         
         setCoin(temp)
-        setIdx(idx => idx+1)
-        
-        if(idx >= 10){
-            console.log(idx);
-            setIdx(0)
-            setCoin(200)
-            setResult({
-                delta: 0,
-                message: ""
-            })
+
+        if(idx<10){
+            setIdx(idx => idx+1)
+        }
+        else{
             setFinalResult("block")
             return 
         }
         setResultVis('block')
+    }
+
+    const handleResultClose = () => {
+        setIdx(0)
+        setCoin(200)
+        setResult({
+            delta: 0,
+            message: ""
+        })
+        setResultVis("none")
+        setFinalResult("none")
     }
 
 
@@ -79,18 +85,26 @@ const Game = () => {
                 </div>
             </div>
  
-            <div className = "result" style={{display: finalResult,zIndex:"3"}} onClick={()=>{setFinalResult("none");setResultVis("none")}}>
-                <h1>Final Results : </h1>
+            <div className = "fResult" style={{display: finalResult,zIndex:"3"}} onClick={handleResultClose}>
+            <h1>Final Results : </h1>
+            
+                <div style={{
+                    display:"flex",
+                    justifyContent:"center",
+                    alignItems:"center"
+                }}>
                 <div>
-                <span style={{color: (coin > 200 ? "green":"red") ,fontSize : "150px"}} >{coin}</span> 
-                <img className="coin_gif" src={logo} />
+                <span style={{color: (coin > 200 ? "green":"red") ,fontSize : "150px"}} >{coin}</span>
+                </div> 
+                <img className="coin_gif" style={{width:"180px"}} src={logo} />
                 </div>
-                
+
                 <br/>
-                 <h1>
-                <u className="message-text">{`You started with 200 coins and ended up with ${coin} coins. (${(coin-200)/2})% return!`}</u>
+                <h1>
+                    <u className="message-text">{`You started with 200 coins and ended up with ${coin} coins. (${(coin-200)/2})% return!`}</u>
                 </h1>
             </div>
+
             <div className = "result" style={{display: resultVis}} onClick={()=>setResultVis("none")}>
                 <span style={{color: (result.delta > 0 ? "green":"red") ,fontSize : "150px"}} >{result.delta > 0 ? "+":""}{result.delta} %</span>
                 <br/>
