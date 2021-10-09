@@ -1,46 +1,86 @@
-import React from "react";
+import React, {useState} from "react";
+
+import {Modal, Carousel} from "react-bootstrap";
 
 import "./investment-options.css";
 
-const InvestmentOption = ({name, image}) => {
+const InvestmentOption = ({name, image, message, fact, flag}) => {
+	const [show, setShow] = useState(false);
+	const [index, setIndex] = useState(0);
+
+	const handleClose = () => {
+		setShow(false);
+		setIndex(0);
+	};
+	const handleShow = () => setShow(true);
+
+	const handleSelect = (selectedIndex, e) => {
+		setIndex(selectedIndex);
+	};
+
 	return (
 		<>
 			<div
 				className='investment-option-parent'
 				data-bs-toggle='modal'
 				data-bs-target='#exampleModal'
-				// style={{backgroundImage: `url(${image})`}}
+				onClick={handleShow}
+				style={
+					flag && {
+						height: "400px",
+						marginLeft: "4rem",
+						marginTop: "1rem",
+					}
+				}
 			>
 				<img src={image} />
 				<h3>{name}</h3>
 			</div>
 
-			<div
-				className='modal fade '
-				id='exampleModal'
-				tabindex='-1'
-				aria-labelledby='exampleModalLabel'
-				aria-hidden='true'
-			>
-				<div className='modal-dialog modal-dialog-centered modal-xl'>
-					<div className='modal-content custom-modal'>
-						<div className='modal-header'>
-							<h5 className='modal-title' id='exampleModalLabel'>
-								{name}
-							</h5>
-							<div
-								type='button'
-								data-bs-dismiss='modal'
-								aria-label='Close'
+			<Modal show={show} onHide={handleClose} centered size='xl'>
+				<Modal.Header className='custom-modal'>
+					<Modal.Title className='custom-modal-title'>
+						<div>{name}</div>
+						<div>
+							<img
+								src='/img/cross_new.png'
 								className='close-button-custom'
-							>
-								<img src='/img/cross_new.png' width='32px' />
-							</div>
+								onClick={handleClose}
+							/>
 						</div>
-						<div className='modal-body'>...</div>
-					</div>
-				</div>
-			</div>
+					</Modal.Title>
+				</Modal.Header>
+				<Modal.Body className='custom-modal custom-modal-body'>
+					<Carousel
+						activeIndex={index}
+						onSelect={handleSelect}
+						className='custom-carousel'
+						interval={null}
+					>
+						<Carousel.Item>
+							<div className='custom-carousel-detail'>
+								<h5>What is {name}?</h5>
+								<br />
+								<p>{message}</p>
+							</div>
+						</Carousel.Item>
+						<Carousel.Item>
+							<div className='custom-carousel-detail'>
+								<h5>Facts</h5>
+								<br />
+								<p>{fact}</p>
+							</div>
+						</Carousel.Item>
+						<Carousel.Item>
+							<div className='custom-carousel-detail'>
+								<h5>Other Details</h5>
+								<br />
+								<p>Test</p>
+							</div>
+						</Carousel.Item>
+					</Carousel>
+				</Modal.Body>
+			</Modal>
 		</>
 	);
 };

@@ -10,6 +10,7 @@
 	background-size: cover;
 	position: relative;
 	overflow: hidden;
+	text-align: center;
 }
 
 .investment-option-parent:hover {
@@ -41,9 +42,27 @@
 .close-button-custom {
 	height: 32px;
 	width: 32px;
+	cursor: pointer;
 }
 
 .custom-modal {
 	background-color: #333f53;
 	color: white;
+}
+
+.custom-modal-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+.custom-carousel {
+	/* background-color: green; */
+	height: 500px;
+}
+
+.custom-carousel-detail {
+	white-space: pre-wrap;
+	margin: 5rem 8rem;
 }
