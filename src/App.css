@@ -1,0 +1,16 @@
+body{
+    border: 0;
+
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Slab', serif;
+
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.bkg{
+    background-color: #252e3d;
+
+    height: 100vh;
+    width: 100vw;
+}
