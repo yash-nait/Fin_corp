@@ -1,9 +1,10 @@
-import React, {useState} from "react";
-import {Modal, Button} from "react-bootstrap";
+import React, {useState, useRef} from "react";
+import {Modal, Button, Overlay, Tooltip} from "react-bootstrap";
 
 import "./Game.css";
 import logo from "./images/logoCoin.gif";
 import info from "./images/info-icon.png";
+
 
 const data = [
 	{
@@ -172,6 +173,10 @@ const Game = () => {
 		delta: 0,
 		message: "",
 	});
+
+	const [showTip1, setShowTip1] = useState(false);
+  	const targetTip1 = useRef(null);
+
 	const handleClick = option => {
 		if (resultVis != "none" || finalResult != "none") return;
 		setResult({
@@ -229,13 +234,26 @@ const Game = () => {
 					<h4>Make your financial choice for the year: </h4>
 				</div>
 				<div className='options'>
-					<button className='button' value={0} onClick={handleClick}>
+					<span style={{fontSize: "2rem"}}>1)</span>
+
+					<button className='button' value={0} onClick={handleClick} ref={targetTip1} onMouseOver={() => setShowTip1(!showTip1)}>
 						{data[idx].options[0]}
 					</button>
+					<Overlay target={targetTip1.current} show={showTip1} placement="right">
+        				{(props) => (
+          					<Tooltip id="overlay-example" {...props}>
+            					My Tooltip
+          					</Tooltip>
+        				)}
+      				</Overlay>
+
+					<br></br>
+					<span style={{fontSize: "2rem"}}>2)</span>
 					<button className='button' value={1} onClick={handleClick}>
 						{data[idx].options[1]}
 					</button>
 					<br></br>
+					<span style={{fontSize: "2rem"}}>3)</span>
 					<button className='button' value={2} onClick={handleClick}>
 						{data[idx].options[2]}
 					</button>
@@ -289,7 +307,7 @@ const Game = () => {
 				style={{display: resultVis}}
 				onClick={() => setResultVis("none")}
 			>
-				<div style={{marginTop: "-10rem", marginBottom: "10rem"}}>
+				<div style={{marginTop: "-10rem", marginBottom: "8rem"}}>
 					Click anywhere to continue
 				</div>
 				<div>
@@ -306,6 +324,7 @@ const Game = () => {
 					<h1>
 						<u className='message-text'>{result.message}</u>
 					</h1>
+					<p style={{margin: '5%'}}>Check your total coins at top of the game.</p>
 				</div>
 			</div>
 		</div>

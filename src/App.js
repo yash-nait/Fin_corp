@@ -19,14 +19,14 @@ function App() {
 				</div>
 			</div>
 			<div>
-				<h4
+				<h3
 					style={{
 						textAlign: "center",
 						marginTop: "4rem",
 					}}
 				>
 					Also learn about
-				</h4>
+				</h3>
 				<div className='row'>
 					<div className='col-6'>
 						<InvestmentOption
