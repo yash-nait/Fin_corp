@@ -1,10 +1,9 @@
 import React, {useState, useRef} from "react";
-import {Modal, Button, Overlay, Tooltip} from "react-bootstrap";
+import {Modal, Overlay, Tooltip} from "react-bootstrap";
 
 import "./Game.css";
 import logo from "./images/logoCoin.gif";
 import info from "./images/info-icon.png";
-
 
 const data = [
 	{
@@ -15,6 +14,11 @@ const data = [
 			"Always a Safe Investment but low return",
 			"Indian's favourite Investment",
 		],
+		tips: [
+			"2009 saw a GDP growth of +7.86%",
+			"Low risk, low yeild investment",
+			"A safe investment",
+		],
 	},
 	{
 		options: ["Stock Market", "Fixed Deposit", "High Risk Assets"],
@@ -23,6 +27,11 @@ const data = [
 			"It's a Crash! It's a Crash!",
 			"Always a Safe Investment but low return",
 			"Well , sometimes you win all and sometimes you lose all, this time you lost.",
+		],
+		tips: [
+			"Last year market were on a bull run, will it continue?",
+			"Low risk, low yeild investment",
+			"Invest in a new startup",
 		],
 	},
 	{
@@ -33,6 +42,11 @@ const data = [
 			"What is an IPO ? (Check the info section)",
 			"Always a Safe Investment but low return",
 		],
+		tips: [
+			"Market crashed last year !",
+			"Company is not profitable but has high potential",
+			"Low risk, low yeild investment",
+		],
 	},
 	{
 		options: ["Stock Market", "Laxmi Chit Fund", "Fixed Deposits"],
@@ -42,14 +56,24 @@ const data = [
 			"It's a SCAM!",
 			"Always a Safe Investment but low return",
 		],
+		tips: [
+			"Last year was very good for investors",
+			"Money double in 25 days ?",
+			"Low risk, low yeild investment",
+		],
 	},
 	{
 		options: ["Stock Market", "Invest in Art", "IPO"],
-		roi: [31.39, 10, 2],
+		roi: [31.39, 10, 5],
 		msg: [
 			"Highest Yearly return in a decade",
 			"One of the Unconventional form of Investment",
 			"You have an eye for the right company",
+		],
+		tips: [
+			"Last year market was stagnent",
+			"Artist has high potential",
+			"A new SAAS company, another one !",
 		],
 	},
 	{
@@ -60,6 +84,11 @@ const data = [
 			"What is Cryptocurrency?(Check the info section)",
 			"Always a Safe Investment but low return",
 		],
+		tips: [
+			"Last year saw the highest return in a decade",
+			"Crypto?",
+			"Low risk, low yeild investment",
+		],
 	},
 	{
 		options: ["Stock Market", "Cryptocurrency", "Fixed Deposits"],
@@ -68,6 +97,11 @@ const data = [
 			"It's a stagnant market",
 			"Just WOW! Risk Paid off!",
 			"Always a Safe Investment but low return",
+		],
+		tips: [
+			"Last year was not so good",
+			"I have heard about it (High Risk)",
+			"Low risk, low yeild investment",
 		],
 	},
 	{
@@ -78,6 +112,11 @@ const data = [
 			"High Risks and High Rewards, unfortunately not this time",
 			"Always a Safe Investment but low return",
 		],
+		tips: [
+			"Last year was bearish",
+			"Last years ROI was unbelievable",
+			"Low risk, low yeild investment",
+		],
 	},
 	{
 		options: ["Stock Market", "Cryptocurrency", "Fixed Deposits"],
@@ -87,23 +126,38 @@ const data = [
 			"You made the right choice",
 			"Always a Safe Investment but low return",
 		],
+		tips: [
+			"Last year was bull-ish but bears can come into picture this year",
+			"It saw a BOOM two years back and a crash last year",
+			"Low Risks , low yeild investment",
+		],
 	},
 	{
 		options: ["Stock Market", "Cryptocurrency", "IPO"],
-		roi: [12.02, 302.8, 70],
+		roi: [-12.02, 302.8, 70],
 		msg: [
 			"It is good but crypto's were better investment.",
 			"Super High Returns! But what are cryptos(Check the info section for details.)",
 			"Well done ! you trusted in an innovative company and it gave you humongous returns",
 		],
+		tips: [
+			"COVID is in the news, will it impact the market",
+			"Prominent guys like Elon Musk are interested in it.Are you?",
+			"A profitable company wants public capital to expand",
+		],
 	},
 	{
 		options: ["Stock Market", "Cryptocurrency", "IPO"],
-		roi: [12.02, 302.8, 70],
+		roi: [-12.02, 302.8, 70],
 		msg: [
 			"It is good but crypto's were better investment.",
 			"Super High Returns! But what are cryptos(Check the info section for details.)",
 			"Well done ! you trusted in an innovative company and it gave you humongous returns",
+		],
+		tips: [
+			"COVID is in the news, will it impact the market",
+			"Prominent guys like Elon Musk are interested in it.Are you?",
+			"A profitable company wants public capital to expand",
 		],
 	},
 ];
@@ -120,6 +174,7 @@ const InfoModal = ({show, handleClose}) => {
 								src='/img/cross_new.png'
 								className='close-button-custom'
 								onClick={handleClose}
+								alt='close-icon'
 							/>
 						</div>
 					</Modal.Title>
@@ -139,6 +194,10 @@ const InfoModal = ({show, handleClose}) => {
 							The objective of the game is to maximise your
 							capital by making an optimal choice in every
 							financial year.
+						</li>
+						<li>
+							Hover on the options to get information about the
+							investment and make an informed decision.
 						</li>
 						<li>
 							After every investment, you will get your returns
@@ -175,10 +234,14 @@ const Game = () => {
 	});
 
 	const [showTip1, setShowTip1] = useState(false);
-  	const targetTip1 = useRef(null);
+	const targetTip1 = useRef(null);
+	const [showTip2, setShowTip2] = useState(false);
+	const targetTip2 = useRef(null);
+	const [showTip3, setShowTip3] = useState(false);
+	const targetTip3 = useRef(null);
 
 	const handleClick = option => {
-		if (resultVis != "none" || finalResult != "none") return;
+		if (resultVis !== "none" || finalResult !== "none") return;
 		setResult({
 			delta: data[idx].roi[option.target.value],
 			message: data[idx].msg[option.target.value],
@@ -215,7 +278,7 @@ const Game = () => {
 				<h4>LOGO</h4>
 				<div onClick={handleShow} style={{cursor: "pointer"}}>
 					How to play
-					<img src={info} className='info-icon' />
+					<img src={info} className='info-icon' alt='info-icon' />
 				</div>
 				<InfoModal show={show} handleClose={handleClose} />
 			</div>
@@ -223,7 +286,7 @@ const Game = () => {
 				<h1 style={{color: "rgb(233, 178, 12)", fontSize: "5rem"}}>
 					{coin}
 				</h1>
-				<img className='coin_gif' src={logo} />
+				<img className='coin_gif' src={logo} alt='coin-icon' />
 			</div>
 
 			<div className='quiz'>
@@ -236,27 +299,77 @@ const Game = () => {
 				<div className='options'>
 					<span style={{fontSize: "2rem"}}>1)</span>
 
-					<button className='button' value={0} onClick={handleClick} ref={targetTip1} onMouseOver={() => setShowTip1(!showTip1)}>
+					<button
+						className='button'
+						value={0}
+						onClick={handleClick}
+						ref={targetTip1}
+						onMouseEnter={() => setShowTip1(true)}
+						onMouseLeave={() => setShowTip1(false)}
+					>
 						{data[idx].options[0]}
 					</button>
-					<Overlay target={targetTip1.current} show={showTip1} placement="right">
-        				{(props) => (
-          					<Tooltip id="overlay-example" {...props}>
-            					My Tooltip
-          					</Tooltip>
-        				)}
-      				</Overlay>
+					<Overlay
+						target={targetTip1.current}
+						show={showTip1}
+						placement='right'
+					>
+						{props => (
+							<Tooltip id='tooltip1' {...props}>
+								{data[idx].tips[0]}
+							</Tooltip>
+						)}
+					</Overlay>
 
 					<br></br>
+
 					<span style={{fontSize: "2rem"}}>2)</span>
-					<button className='button' value={1} onClick={handleClick}>
+					<button
+						className='button'
+						value={1}
+						onClick={handleClick}
+						ref={targetTip2}
+						onMouseEnter={() => setShowTip2(true)}
+						onMouseLeave={() => setShowTip2(false)}
+					>
 						{data[idx].options[1]}
 					</button>
+					<Overlay
+						target={targetTip2.current}
+						show={showTip2}
+						placement='right'
+					>
+						{props => (
+							<Tooltip id='tooltip2' {...props}>
+								{data[idx].tips[1]}
+							</Tooltip>
+						)}
+					</Overlay>
+
 					<br></br>
+
 					<span style={{fontSize: "2rem"}}>3)</span>
-					<button className='button' value={2} onClick={handleClick}>
+					<button
+						className='button'
+						value={2}
+						onClick={handleClick}
+						ref={targetTip3}
+						onMouseEnter={() => setShowTip3(true)}
+						onMouseLeave={() => setShowTip3(false)}
+					>
 						{data[idx].options[2]}
 					</button>
+					<Overlay
+						target={targetTip3.current}
+						show={showTip3}
+						placement='right'
+					>
+						{props => (
+							<Tooltip id='tooltip3' {...props}>
+								{data[idx].tips[2]}
+							</Tooltip>
+						)}
+					</Overlay>
 				</div>
 			</div>
 
@@ -288,6 +401,7 @@ const Game = () => {
 						className='coin_gif'
 						style={{width: "180px"}}
 						src={logo}
+						alt='coin-icon'
 					/>
 				</div>
 
@@ -324,7 +438,9 @@ const Game = () => {
 					<h1>
 						<u className='message-text'>{result.message}</u>
 					</h1>
-					<p style={{margin: '5%'}}>Check your total coins at top of the game.</p>
+					<p style={{margin: "5%"}}>
+						Check your total coins at top of the game.
+					</p>
 				</div>
 			</div>
 		</div>

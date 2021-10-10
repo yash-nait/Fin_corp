@@ -33,7 +33,7 @@ const InvestmentOption = ({name, image, message, fact, flag, glossary}) => {
 					}
 				}
 			>
-				<img src={image} />
+				<img src={image} alt='background' />
 				<h3>{name}</h3>
 			</div>
 
@@ -46,6 +46,7 @@ const InvestmentOption = ({name, image, message, fact, flag, glossary}) => {
 								src='/img/cross_new.png'
 								className='close-button-custom'
 								onClick={handleClose}
+								alt='close-icon'
 							/>
 						</div>
 					</Modal.Title>
@@ -66,14 +67,22 @@ const InvestmentOption = ({name, image, message, fact, flag, glossary}) => {
 						</Carousel.Item>
 						<Carousel.Item>
 							<div className='custom-carousel-detail'>
-								<h5>Facts</h5>
+								<h5>
+									{name === "Compounding"
+										? "Formula"
+										: "Facts"}
+								</h5>
 								<br />
 								<p>{fact}</p>
 							</div>
 						</Carousel.Item>
 						<Carousel.Item>
 							<div className='custom-carousel-detail'>
-								<h5>Glossary</h5>
+								<h5>
+									{name === "Compounding"
+										? "Defination"
+										: "Glossary"}
+								</h5>
 								<br />
 								<p>{glossary}</p>
 							</div>

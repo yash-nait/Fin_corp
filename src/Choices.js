@@ -25,6 +25,7 @@ const Choices = () => {
 				image={CryptoBackground}
 				message={Details.crypto.info}
 				fact={Details.crypto.fact}
+				glossary={Details.crypto.glossary}
 			/>
 			<InvestmentOption
 				name='Stock Market'
@@ -36,6 +37,9 @@ const Choices = () => {
 			<InvestmentOption
 				name='Traditional Banking'
 				image={BankBackground}
+				message={Details.bank.info}
+				fact={Details.bank.fact}
+				glossary={Details.bank.glossary}
 			/>
 			<InvestmentOption name='Miscellaneous' image={MiscBackground} />
 		</>
