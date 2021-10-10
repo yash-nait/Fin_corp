@@ -275,8 +275,10 @@ const Game = () => {
 	return (
 		<div>
 			<div className='header'>
-				<h4>LOGO</h4>
-				<div onClick={handleShow} style={{cursor: "pointer"}}>
+				<h4 style={{
+					cursor: "none"	
+				}}>Fin.Learn</h4>
+				<div onClick={handleShow} className="topbar">
 					How to play
 					<img src={info} className='info-icon' alt='info-icon' />
 				</div>

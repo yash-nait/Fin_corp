@@ -11,3 +11,9 @@ body {
 .bkg {
 	background-color: #252e3d;
 }
+.footer{
+	background-color: #1e2531;
+	width: 100%;
+	padding: 2% 0 2% 0;
+	text-align: center;
+}

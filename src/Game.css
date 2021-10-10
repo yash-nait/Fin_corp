@@ -102,3 +102,11 @@ li::marker {
 	margin: 15px 0;
 	color: #ff9526;
 }
+.topbar{
+	cursor: pointer;
+	transition: all 0.4s;
+}
+.topbar:hover{
+	color: #ff9526;
+	transform: scale(1.3);
+}
