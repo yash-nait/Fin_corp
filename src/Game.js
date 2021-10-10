@@ -136,7 +136,7 @@ const data = [
 		options: ["Stock Market", "Cryptocurrency", "IPO"],
 		roi: [-12.02, 302.8, 70],
 		msg: [
-			"It is good but crypto's were better investment.",
+			"COVID hits the market HARD!",
 			"Super High Returns! But what are cryptos(Check the info section for details.)",
 			"Well done ! you trusted in an innovative company and it gave you humongous returns",
 		],
@@ -150,7 +150,7 @@ const data = [
 		options: ["Stock Market", "Cryptocurrency", "IPO"],
 		roi: [-12.02, 302.8, 70],
 		msg: [
-			"It is good but crypto's were better investment.",
+			"COVID hits the market HARD!",
 			"Super High Returns! But what are cryptos(Check the info section for details.)",
 			"Well done ! you trusted in an innovative company and it gave you humongous returns",
 		],
@@ -413,7 +413,7 @@ const Game = () => {
 						(coin - 200) / 2
 					})% return!`}</u>
 				</h1>
-				<div style={{marginTop: "10rem"}}>
+				<div style={{marginTop: "5rem"}}>
 					Click anywhere to continue
 				</div>
 			</div>

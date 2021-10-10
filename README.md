@@ -1,6 +1,30 @@
+# Fin.Learn
+## _An application to educate young adults about financial planning and investing_
+
+
+##### The app will make people more interested in finance and it will not stop only on our app but make them curious to search more about it on internet. People will take more interest in their finances.
+
+
+
+
+## Tech
+
+Fin.Learn uses a number of open source projects to work properly:
+- ReactJS
+- Javascript
+- Bootstrap
+- React-Bootstrap
+- CSS
+- Vercel
+
+
+And of course Fin.Learn itself is open source with a [public repository](https://github.com/yash-nait/Fin_corp)
+ on GitHub.
+
+
+
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
