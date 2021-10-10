@@ -16,6 +16,7 @@ const Choices = () => {
 					marginRight: "12%",
 					marginTop: "2rem",
 					marginBottom: "4rem",
+					cursor: "none"
 				}}
 			>
 				Learn about
@@ -33,15 +34,20 @@ const Choices = () => {
 				message={Details.stock.info}
 				fact={Details.stock.fact}
 				glossary={Details.stock.glossary}
-			/>
+				/>
 			<InvestmentOption
 				name='Traditional Banking'
 				image={BankBackground}
 				message={Details.bank.info}
 				fact={Details.bank.fact}
 				glossary={Details.bank.glossary}
+				/>
+			<InvestmentOption name='Miscellaneous' 
+				image={MiscBackground} 
+				message={Details.miscellaneous.info} 
+				fact={Details.miscellaneous.fact}
+				glossary={Details.miscellaneous.glossary}
 			/>
-			<InvestmentOption name='Miscellaneous' image={MiscBackground} />
 		</>
 	);
 };

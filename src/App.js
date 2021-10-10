@@ -17,10 +17,12 @@ function App() {
 			{!intro && (
 				<>
 					<div className='row'>
-						<div className='col-8'>
+						<div className='col-md-8'>
 							<Game />
 						</div>
-						<div className='col-4'>
+						<div className='col-md-4' style={{
+							padding:"0 0 0 2%"
+						}}>
 							<Choices />
 						</div>
 					</div>
@@ -34,7 +36,7 @@ function App() {
 							Also learn about
 						</h3>
 						<div className='row'>
-							<div className='col-6'>
+							<div className='col-md-6'>
 								<InvestmentOption
 									name='Tax'
 									image={TaxBackground}
@@ -44,7 +46,7 @@ function App() {
 									glossary={Details.tax.glossary}
 								/>
 							</div>
-							<div className='col-6'>
+							<div className='col-md-6'>
 								<InvestmentOption
 									name='Compounding'
 									image={CompoudingBackground}
@@ -56,7 +58,9 @@ function App() {
 							</div>
 						</div>
 					</div>
-					<div className='footer'></div>
+					<div className='footer'>
+						Made by team HFS
+					</div>
 				</>
 			)}
 		</div>
