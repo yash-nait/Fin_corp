@@ -21,7 +21,7 @@ const Details = {
 	},
 	compounding: {
 		glossary: `Compound interest (or compounding interest) is the interest on a loan or deposit calculated based on both the initial principal and the accumulated interest from previous periods.`,
-		info: `“Compound interest is the eighth wonderof the world. He who understands it, earns it ... he who doesn't ... pays it.”\n--Albert Einstein{" "}`,
+		info: `“Compound interest is the eighth wonderof the world. He who understands it, earns it ... he who doesn't ... pays it.”\n--Albert Einstein${" "}`,
 		fact: `A = P (1 + r/n) (nt)\n\nwhere:\nA = the future value of the investment/loan, including interest\nP = the principal investment amount (the initial deposit or loan amount)\nr = the annual interest rate (decimal)\nn = the number of times that interest is compounded per unit t\nt = the time the money is invested or borrowed for`,
 	},
 	miscellaneous:{

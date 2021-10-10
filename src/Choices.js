@@ -42,7 +42,7 @@ const Choices = () => {
 				fact={Details.bank.fact}
 				glossary={Details.bank.glossary}
 				/>
-			<InvestmentOption name='Miscellaneous' 
+			<InvestmentOption name='Miscellaneous Investing' 
 				image={MiscBackground} 
 				message={Details.miscellaneous.info} 
 				fact={Details.miscellaneous.fact}
